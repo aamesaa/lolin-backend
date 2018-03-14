@@ -1,6 +1,7 @@
 package com.lolin.serviceImpl;
 
 import com.lolin.domain.DetailTransaksi;
+import com.lolin.domain.ItemTransaksi;
 import com.lolin.repository.DetailTransaksiRepository;
 import com.lolin.service.DetailTransaksiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +35,19 @@ public class DetailTransaksiServiceImpl implements DetailTransaksiService {
     }
 
     @Override
-    public DetailTransaksi getUserById(int Id) {
-        return null;
+    public DetailTransaksi getDetailById(int id) {
+        DetailTransaksi itemDetail = detailTransaksiRepository.findOneById(id);
+        if(itemDetail == null)
+        {
+            return itemDetail;
+        }
+        return itemDetail;
     }
 
+
     @Override
-    public DetailTransaksi getDetailByIdUser(int id_user) {
-        DetailTransaksi itemDetail = detailTransaksiRepository.findOneByIdUser(id_user);
+    public List<DetailTransaksi> getDetailByIdUser(int id_user) {
+        List<DetailTransaksi> itemDetail = detailTransaksiRepository.findOneByIdUser(id_user);
         if(itemDetail == null)
         {
             return itemDetail;
@@ -49,8 +56,8 @@ public class DetailTransaksiServiceImpl implements DetailTransaksiService {
     }
 
     @Override
-    public DetailTransaksi getDetailByIdBarang(int id_barang) {
-        DetailTransaksi itemDetail = detailTransaksiRepository.findOneByIdBarang(id_barang);
+    public List<DetailTransaksi> getDetailByIdBarang(int id_barang) {
+        List<DetailTransaksi> itemDetail = detailTransaksiRepository.findOneByIdBarang(id_barang);
         if(itemDetail == null)
         {
             return itemDetail;
@@ -60,6 +67,9 @@ public class DetailTransaksiServiceImpl implements DetailTransaksiService {
 
     @Override
     public DetailTransaksi saveDetail(DetailTransaksi detailTransaksi) {
-        return null;
+        DetailTransaksi detailTransaksis = new DetailTransaksi(detailTransaksi.getId_barang(), detailTransaksi.getId_user(),
+                detailTransaksi.getHrg_bid());
+        detailTransaksiRepository.save(detailTransaksis);
+        return detailTransaksis;
     }
 }

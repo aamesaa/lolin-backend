@@ -20,9 +20,12 @@ public interface DetailTransaksiRepository extends JpaRepository<DetailTransaksi
 
     List<DetailTransaksi> findAll();
 
+    @Query(value = "SELECT new com.lolin.domain.DetailTransaksi( id, id_user, id_barang, hrg_bid) from DetailTransaksi where id=(?1)")
+    DetailTransaksi findOneById(int id);
+
     @Query(value = "SELECT new com.lolin.domain.DetailTransaksi( id, id_user, id_barang, hrg_bid) from DetailTransaksi where id_user=(?1)")
-    DetailTransaksi findOneByIdUser(int id_user);
+    List<DetailTransaksi> findOneByIdUser(int id_user);
 
     @Query(value = "SELECT new com.lolin.domain.DetailTransaksi( id, id_user, id_barang, hrg_bid) from DetailTransaksi where id_barang=(?1)")
-    DetailTransaksi findOneByIdBarang(int id_barang);
+    List<DetailTransaksi >findOneByIdBarang(int id_barang);
 }

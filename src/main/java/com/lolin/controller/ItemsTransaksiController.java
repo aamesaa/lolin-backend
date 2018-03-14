@@ -1,5 +1,6 @@
 package com.lolin.controller;
 
+import com.lolin.domain.DetailTransaksi;
 import com.lolin.domain.ItemTransaksi;
 import com.lolin.domain.UserLolin;
 import com.lolin.service.ItemTransaksiService;
@@ -24,17 +25,6 @@ public class ItemsTransaksiController  {
     @Autowired
     ItemTransaksiService itemTransaksiService;
 
-//    @GetMapping("/items")
-//    public ResponseEntity<List<ItemTransaksiVo>> getAllItem() {
-//        List<ItemTransaksiVo> getAllItem = itemTransaksiService.getAllItem();
-//        if (getAllItem != null)
-//        {
-//            System.out.print(getAllItem.size());
-//            return new ResponseEntity<List<ItemTransaksiVo>>(getAllItem, HttpStatus.OK);
-//        }
-//        return new ResponseEntity<List<ItemTransaksiVo>>(getAllItem, HttpStatus.OK);
-//    }
-//
     @GetMapping("/items")
     public ResponseEntity<List<ItemTransaksi>> getAll() {
         List<ItemTransaksi> getAll = itemTransaksiService.getAllItem();
@@ -46,9 +36,16 @@ public class ItemsTransaksiController  {
         return new ResponseEntity<List<ItemTransaksi>>(getAll, HttpStatus.OK);
     }
 
-    @GetMapping("/item/{id_user}")
-    public ResponseEntity<ItemTransaksi> getItemByUser(@PathVariable int id_user) {
-        return new ResponseEntity<ItemTransaksi>(this.itemTransaksiService.getItemByIdUser(id_user), HttpStatus.OK);
+    @GetMapping("/item/user/{id_user}")
+    public ResponseEntity<List<ItemTransaksi>> getItemByUser(@PathVariable int id_user) {
+        List<ItemTransaksi> getItemByUserPnwr = itemTransaksiService.getItemByIdUser(id_user);
+        return new ResponseEntity<List<ItemTransaksi>>(getItemByUserPnwr, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/item/{id}")
+    public ResponseEntity<ItemTransaksi> getItemById(@PathVariable int id) {
+        return new ResponseEntity<ItemTransaksi>(this.itemTransaksiService.getItemById(id), HttpStatus.OK);
 
     }
 

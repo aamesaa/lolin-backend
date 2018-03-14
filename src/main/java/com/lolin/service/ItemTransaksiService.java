@@ -10,11 +10,9 @@ import java.util.List;
 public interface ItemTransaksiService {
 
     List<ItemTransaksi> getAllItem();
-    ItemTransaksi getItemByIdUser (int id_user);
+    List<ItemTransaksi> getItemByIdUser (int id_user);
     ItemTransaksi saveTransaksi (ItemTransaksi itemTransaksi);
-
-//
-//    ItemTransaksi getItemById (String nama_user);
+    ItemTransaksi getItemById (int id);
 //
 //    ItemTransaksi changeItem (int hrg_deal, boolean status);
 }

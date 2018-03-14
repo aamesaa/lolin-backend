@@ -39,8 +39,8 @@ public class ItemTransaksiServiceImpl implements ItemTransaksiService {
     }
 
     @Override
-    public ItemTransaksi getItemByIdUser(int id_user) {
-        ItemTransaksi itemMapper = itemTransaksiRepository.findOneByIdUser(id_user);
+    public List<ItemTransaksi> getItemByIdUser(int id_user) {
+        List<ItemTransaksi> itemMapper = itemTransaksiRepository.findOneByIdUser(id_user);
         if(itemMapper == null)
         {
             return itemMapper;
@@ -55,6 +55,16 @@ public class ItemTransaksiServiceImpl implements ItemTransaksiService {
         itemTransaksiRepository.save(itemTransaksis);
         return itemTransaksis;
         
+    }
+
+    @Override
+    public ItemTransaksi getItemById(int id) {
+        ItemTransaksi itemMapper = itemTransaksiRepository.findOneById(id);
+        if(itemMapper == null)
+        {
+            return itemMapper;
+        }
+        return itemMapper;
     }
 
 }

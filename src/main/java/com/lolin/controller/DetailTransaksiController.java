@@ -1,6 +1,7 @@
 package com.lolin.controller;
 
 import com.lolin.domain.DetailTransaksi;
+import com.lolin.domain.ItemTransaksi;
 import com.lolin.service.DetailTransaksiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -31,14 +34,31 @@ public class DetailTransaksiController {
     }
 
     @GetMapping("/item/detail/user/{id_user}")
-    public ResponseEntity<DetailTransaksi> getDetailByUser(@PathVariable int id_user) {
-        return new ResponseEntity<DetailTransaksi>(this.detailTransaksiService.getDetailByIdUser(id_user), HttpStatus.OK);
 
+    public ResponseEntity<List<DetailTransaksi>> getDetailByUser(@PathVariable int id_user) {
+        List<DetailTransaksi> getDetailByUser = detailTransaksiService.getDetailByIdUser(id_user);
+        return new ResponseEntity <List<DetailTransaksi>>(getDetailByUser, HttpStatus.OK);
     }
 
     @GetMapping("/item/detail/transaksi/{id_barang}")
-    public ResponseEntity<DetailTransaksi> getDetailByBarang(@PathVariable int id_barang) {
-        return new ResponseEntity<DetailTransaksi>(this.detailTransaksiService.getDetailByIdBarang(id_barang), HttpStatus.OK);
+    public ResponseEntity<List<DetailTransaksi>> getDetailByBarang(@PathVariable int id_barang) {
+        List<DetailTransaksi> getDetailByBarang = detailTransaksiService.getDetailByIdBarang(id_barang);
+        return new ResponseEntity<List<DetailTransaksi>>(getDetailByBarang, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/item/detail/{id}")
+    public ResponseEntity<DetailTransaksi> getDetailById(@PathVariable int id) {
+        return new ResponseEntity<DetailTransaksi>(this.detailTransaksiService.getDetailById(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/items/detail")
+    public ResponseEntity<String> saveDetail(@RequestBody DetailTransaksi detailTransaksiMapper) {
+        DetailTransaksi detailTransaksi = detailTransaksiService.saveDetail(detailTransaksiMapper);
+        if (detailTransaksi != null) {
+            return new ResponseEntity<String>("Detail Transaksi Saved", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>(" Detail Transaksi Not Saved", HttpStatus.BAD_REQUEST);
+        }
     }
 }
