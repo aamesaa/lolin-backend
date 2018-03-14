@@ -26,7 +26,24 @@ public class ItemTransaksi implements Serializable{
     private int hrg_deal;
     private boolean status_barang;
 
-//    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "barang", cascade = CascadeType.ALL)
+//    id_user, nama_barang, qty,  alamat, jns_pengiriman, hrg_deal
+
+    public ItemTransaksi(int id, int id_user, String nama_barang, int qty, String jns_pengiriman, String alamat, int hrg_deal, boolean status_barang) {
+        this.id = id;
+        this.id_user = id_user;
+        this.nama_barang = nama_barang;
+        this.qty = qty;
+        this.jns_pengiriman = jns_pengiriman;
+        this.alamat = alamat;
+        this.hrg_deal = hrg_deal;
+        this.status_barang = status_barang;
+    }
+
+    public ItemTransaksi() {
+
+    }
+
+    //    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "barang", cascade = CascadeType.ALL)
 //    private Set<DetailTransaksi> detailTransaksis;
 
 //    public ItemTransaksi() {

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -40,5 +41,11 @@ public class ItemsTransaksiController  {
             return new ResponseEntity<List<ItemTransaksi>>(getAll, HttpStatus.OK);
         }
         return new ResponseEntity<List<ItemTransaksi>>(getAll, HttpStatus.OK);
+    }
+
+    @GetMapping("/item/{id_user}")
+    public ResponseEntity<ItemTransaksi> getItemByUser(@PathVariable int id_user) {
+        return new ResponseEntity<ItemTransaksi>(this.itemTransaksiService.getItemByIdUser(id_user), HttpStatus.OK);
+
     }
 }

@@ -1,6 +1,7 @@
 package com.lolin.repository;
 
 import com.lolin.domain.ItemTransaksi;
+import com.lolin.domain.UserLolin;
 import com.lolin.vo.ItemTransaksiVo;
 import com.lolin.vo.UserLolinVo;
 import org.springframework.data.jpa.repository.Query;
@@ -22,8 +23,11 @@ public interface ItemTransaksiRepository extends JpaRepository<ItemTransaksi, St
 
 //    List<ItemTransaksi> findAll();
 
-//    @Query(value = "SELECT new com.lolin.vo.ItemTransaksiVo(id, nama_barang, hrg_deal, qty, alamat, jns_pengiriman, status_barang) from ItemTransaksi")
+//    @Query(value = "SELECT new com.lolin.vo.ItemTransaksiVo(id_user,  nama_barang, qty,  alamat, jns_pengiriman, hrg_deal) from ItemTransaksi")
 //    List<ItemTransaksiVo> findAllItem();
+
+    @Query(value = "SELECT new com.lolin.domain.ItemTransaksi( id, id_user, nama_barang, qty,  alamat, jns_pengiriman, hrg_deal, status_barang) from ItemTransaksi where id_user=(?1)")
+    ItemTransaksi findOneByIdUser(int id_user);
 
     List<ItemTransaksi> findAll();
 }
