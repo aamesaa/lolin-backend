@@ -3,6 +3,7 @@ package com.lolin.controller;
 import com.lolin.domain.DetailTransaksi;
 import com.lolin.domain.ItemTransaksi;
 import com.lolin.domain.UserLolin;
+import com.lolin.repository.ItemTransaksiRepository;
 import com.lolin.service.ItemTransaksiService;
 import com.lolin.vo.ItemTransaksiVo;
 import com.lolin.vo.UserLolinVo;
@@ -21,6 +22,9 @@ import java.util.List;
 public class ItemsTransaksiController  {
     @Autowired
     ItemTransaksiService itemTransaksiService;
+
+    @Autowired
+    ItemTransaksiRepository itemTransaksiRepository;
 
     @GetMapping("/items")
     public ResponseEntity<List<ItemTransaksi>> getAll() {
@@ -56,9 +60,22 @@ public class ItemsTransaksiController  {
         }
     }
 
+//    @PutMapping ("/items/{id}")
+//    public ItemTransaksi updateItem(@PathVariable int id , @RequestBody ItemTransaksi itemTransaksiMapper) {
+//        ItemTransaksi updatedTransaksi = itemTransaksiRepository.findOneById(id);
+//        updatedTransaksi.setHrg_deal(itemTransaksiMapper.getHrg_deal());
+//        updatedTransaksi.setStatus_barang(itemTransaksiMapper.isStatus_barang());
+//        ItemTransaksi updateTransaksi = itemTransaksiRepository.save(updatedTransaksi);
+//        return updatedTransaksi;
+////        return new ResponseEntity<String>("Transaksi Updated", HttpStatus.OK);
+//    }
+
     @PutMapping ("/items/{id}")
     public ResponseEntity<String> updateItem(@PathVariable int id , @RequestBody ItemTransaksi itemTransaksiMapper) {
         ItemTransaksi updatedTransaksi = itemTransaksiService.updateTransaksi(itemTransaksiMapper);
-        return new ResponseEntity<String>("Transaksi Updated", HttpStatus.OK);
+        if (updatedTransaksi.getId() == id) {
+            return new ResponseEntity<String>("Transaksi Updated", HttpStatus.OK);
+        }
+        return new ResponseEntity<String>("Transaksi Fail", HttpStatus.OK);
     }
 }

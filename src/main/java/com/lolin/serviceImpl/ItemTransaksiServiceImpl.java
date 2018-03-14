@@ -63,13 +63,10 @@ public class ItemTransaksiServiceImpl implements ItemTransaksiService {
         return itemMapper;
     }
 
-    @Override
     public ItemTransaksi updateTransaksi(ItemTransaksi itemTransaksi) {
         ItemTransaksi oldItemTransaksi = itemTransaksiRepository.findOneById(itemTransaksi.getId());
-        if (oldItemTransaksi == null)
-        {
-          return  oldItemTransaksi;
-        }
+        System.out.println("Idnya " + itemTransaksi.getId());
+        oldItemTransaksi.setId(itemTransaksi.getId());
         oldItemTransaksi.setHrg_deal(itemTransaksi.getHrg_deal());
         oldItemTransaksi.setStatus_barang(itemTransaksi.isStatus_barang());
         ItemTransaksi newItemTransaksi = itemTransaksiRepository.save(oldItemTransaksi);
