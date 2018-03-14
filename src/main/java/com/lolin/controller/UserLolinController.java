@@ -22,8 +22,8 @@ public class UserLolinController {
     @Autowired UserLolinService userLolinService;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> saveUser(@RequestBody UserLolinVo userLolinMapperVo) {
-        UserLolin userLolin = userLolinService.saveUser(userLolinMapperVo);
+    public ResponseEntity<String> saveUser(@RequestBody UserLolin userLolinMapper) {
+        UserLolin userLolin = userLolinService.saveUser(userLolinMapper);
         if (userLolin != null) {
             return new ResponseEntity<String>("User Saved", HttpStatus.OK);
         } else {
@@ -32,21 +32,21 @@ public class UserLolinController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<UserLolinVo>> getAllUser() {
-        List<UserLolinVo> getAllUser = userLolinService.getAllUser();
+    public ResponseEntity<List<UserLolin>> getAllUser() {
+        List<UserLolin> getAllUser = userLolinService.getAllUser();
         if (getAllUser != null)
         {
             System.out.print(getAllUser.size());
-            return new ResponseEntity<List<UserLolinVo>>(getAllUser, HttpStatus.OK);
+            return new ResponseEntity<List<UserLolin>>(getAllUser, HttpStatus.OK);
         }
-       return new ResponseEntity<List<UserLolinVo>>(getAllUser, HttpStatus.OK);
+       return new ResponseEntity<List<UserLolin>>(getAllUser, HttpStatus.OK);
 
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserLolinVo> getUserById(@PathVariable int id) {
-        UserLolinVo getUser = userLolinService.getUserById(id);
-        return new ResponseEntity<UserLolinVo>(getUser, HttpStatus.OK);
+    public ResponseEntity<UserLolin> getUserById(@PathVariable int id) {
+        UserLolin getUser = userLolinService.getUserById(id);
+        return new ResponseEntity<UserLolin>(getUser, HttpStatus.OK);
 
     }
 }

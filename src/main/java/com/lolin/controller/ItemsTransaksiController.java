@@ -20,14 +20,25 @@ public class ItemsTransaksiController  {
     @Autowired
     ItemTransaksiService itemTransaksiService;
 
-    @GetMapping("/items")
-    public ResponseEntity<List<ItemTransaksiVo>> getAllItem() {
-        List<ItemTransaksiVo> getAllItem = itemTransaksiService.getAllItem();
-        if (getAllItem != null)
+//    @GetMapping("/items")
+//    public ResponseEntity<List<ItemTransaksiVo>> getAllItem() {
+//        List<ItemTransaksiVo> getAllItem = itemTransaksiService.getAllItem();
+//        if (getAllItem != null)
+//        {
+//            System.out.print(getAllItem.size());
+//            return new ResponseEntity<List<ItemTransaksiVo>>(getAllItem, HttpStatus.OK);
+//        }
+//        return new ResponseEntity<List<ItemTransaksiVo>>(getAllItem, HttpStatus.OK);
+//    }
+//
+    @GetMapping("/item")
+    public ResponseEntity<List<ItemTransaksi>> getAll() {
+        List<ItemTransaksi> getAll = itemTransaksiService.getAllItem();
+        if (getAll != null)
         {
-            System.out.print(getAllItem.size());
-            return new ResponseEntity<List<ItemTransaksiVo>>(getAllItem, HttpStatus.OK);
+            System.out.print(getAll.size());
+            return new ResponseEntity<List<ItemTransaksi>>(getAll, HttpStatus.OK);
         }
-        return new ResponseEntity<List<ItemTransaksiVo>>(getAllItem, HttpStatus.OK);
+        return new ResponseEntity<List<ItemTransaksi>>(getAll, HttpStatus.OK);
     }
 }

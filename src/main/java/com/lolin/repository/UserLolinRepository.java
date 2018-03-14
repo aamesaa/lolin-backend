@@ -25,7 +25,7 @@ public interface UserLolinRepository extends JpaRepository<UserLolin, String>{
     List<UserLolin> findAll();
 
     UserLolin findOneById(int id);
-
-    @Query(value = "SELECT new com.lolin.vo.UserLolinVo(id, email, password, nama_user, alamat, no_hp) from UserLolin")
-    List<UserLolinVo> findAllUser();
+//
+//    @Query(value = "SELECT new com.lolin.vo.UserLolinVo(id, email, password, nama_user, alamat, no_hp) from UserLolin")
+//    List<UserLolinVo> findAllUser();
 }

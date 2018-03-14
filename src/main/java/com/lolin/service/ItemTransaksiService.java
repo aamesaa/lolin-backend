@@ -10,7 +10,8 @@ import java.util.List;
  * Created by charolinesepta on 14/03/18.
  */
 public interface ItemTransaksiService {
-    List<ItemTransaksiVo> getAllItem();
+//    List<ItemTransaksiVo> getAll();
+    List<ItemTransaksi> getAllItem();
     ItemTransaksi getItemByIdUser (String email);
     ItemTransaksi getItemById (String nama_user);
     ItemTransaksi saveTransaksi (ItemTransaksiVo itemTransaksiVo);

@@ -1,5 +1,7 @@
 package com.lolin.vo;
 
+import com.lolin.domain.ItemTransaksi;
+
 import java.io.Serializable;
 
 /**
@@ -10,26 +12,57 @@ public class ItemTransaksiVo implements Serializable{
     private int id;
     private int user_lolin_id;
     private String nama_barang;
-    private int harga_deal;
+    private int hrg_deal;
     private int qty;
     private String jns_pengiriman;
     private String alamat;
     private Boolean status_barang;
 
-    public ItemTransaksiVo(int id, int user_lolin_id, String nama_barang, int harga_deal, int qty, String jns_pengiriman, String alamat) {
+    public ItemTransaksiVo(int id, int user_lolin_id, String nama_barang, int hrg_deal, int qty, String jns_pengiriman, String alamat) {
         this.id = id;
         this.user_lolin_id = user_lolin_id;
         this.nama_barang = nama_barang;
-        this.harga_deal = harga_deal;
+        this.hrg_deal = hrg_deal;
         this.qty = qty;
         this.jns_pengiriman = jns_pengiriman;
         this.alamat = alamat;
     }
 
-    public ItemTransaksiVo( int id, String nama_barang, int harga_deal, int qty,  String alamat, String jns_pengiriman, Boolean status_barang) {
+    public ItemTransaksiVo(int user_lolin_id, String nama_barang, int hrg_deal, int qty, String jns_pengiriman, String alamat) {
+        this.user_lolin_id = user_lolin_id;
+        this.nama_barang = nama_barang;
+        this.hrg_deal = hrg_deal;
+        this.qty = qty;
+        this.jns_pengiriman = jns_pengiriman;
+        this.alamat = alamat;
+    }
+
+//    public ItemTransaksiVo(int id, ItemTransaksi itemTransaksi, String nama_barang, int hrg_deal, int qty, String jns_pengiriman, String alamat, Boolean status_barang) {
+//        this.id = id;
+//        this.user_lolin_id = itemTransaksi.getUserLolin().getId();
+//        this.nama_barang = nama_barang;
+//        this.hrg_deal = hrg_deal;
+//        this.qty = qty;
+//        this.jns_pengiriman = jns_pengiriman;
+//        this.alamat = alamat;
+//        this.status_barang = status_barang;
+//    }
+//
+//    public ItemTransaksiVo(ItemTransaksi itemTransaksi) {
+//        this.id = itemTransaksi.getId();
+//        this.user_lolin_id = itemTransaksi.getUserLolin().getId();
+//        this.nama_barang = itemTransaksi.getNama_barang();
+//        this.hrg_deal = itemTransaksi.getHrg_deal();
+//        this.qty = itemTransaksi.getQty();
+//        this.jns_pengiriman = itemTransaksi.getJns_pengiriman();
+//        this.alamat = itemTransaksi.getAlamat();
+//        this.status_barang = itemTransaksi.isStatus_barang();
+//    }
+
+    public ItemTransaksiVo( int id, String nama_barang, int hrg_deal, int qty,  String alamat, String jns_pengiriman, Boolean status_barang) {
         this.id = id;
         this.nama_barang = nama_barang;
-        this.harga_deal = harga_deal;
+        this.hrg_deal = hrg_deal;
         this.qty = qty;
         this.jns_pengiriman = jns_pengiriman;
         this.alamat = alamat;
@@ -62,14 +95,6 @@ public class ItemTransaksiVo implements Serializable{
 
     public void setNama_barang(String nama_barang) {
         this.nama_barang = nama_barang;
-    }
-
-    public int getHarga_deal() {
-        return harga_deal;
-    }
-
-    public void setHarga_deal(int harga_deal) {
-        this.harga_deal = harga_deal;
     }
 
     public int getQty() {
@@ -108,6 +133,14 @@ public class ItemTransaksiVo implements Serializable{
         this.status_barang = status_barang;
     }
 
+    public int getHrg_deal() {
+        return hrg_deal;
+    }
+
+    public void setHrg_deal(int hrg_deal) {
+        this.hrg_deal = hrg_deal;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,7 +150,7 @@ public class ItemTransaksiVo implements Serializable{
 
         if (id != that.id) return false;
         if (user_lolin_id != that.user_lolin_id) return false;
-        if (harga_deal != that.harga_deal) return false;
+        if (hrg_deal != that.hrg_deal) return false;
         if (qty != that.qty) return false;
         if (nama_barang != null ? !nama_barang.equals(that.nama_barang) : that.nama_barang != null) return false;
         if (jns_pengiriman != null ? !jns_pengiriman.equals(that.jns_pengiriman) : that.jns_pengiriman != null)
@@ -131,7 +164,7 @@ public class ItemTransaksiVo implements Serializable{
         int result = id;
         result = 31 * result + user_lolin_id;
         result = 31 * result + (nama_barang != null ? nama_barang.hashCode() : 0);
-        result = 31 * result + harga_deal;
+        result = 31 * result + hrg_deal;
         result = 31 * result + qty;
         result = 31 * result + (jns_pengiriman != null ? jns_pengiriman.hashCode() : 0);
         result = 31 * result + (alamat != null ? alamat.hashCode() : 0);

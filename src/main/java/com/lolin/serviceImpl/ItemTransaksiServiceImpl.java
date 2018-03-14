@@ -1,11 +1,9 @@
 package com.lolin.serviceImpl;
 
 import com.lolin.domain.ItemTransaksi;
-import com.lolin.domain.UserLolin;
 import com.lolin.repository.ItemTransaksiRepository;
 import com.lolin.service.ItemTransaksiService;
 import com.lolin.vo.ItemTransaksiVo;
-import com.lolin.vo.UserLolinVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,14 +26,15 @@ public class ItemTransaksiServiceImpl implements ItemTransaksiService {
     }
 
     @Override
-    public List<ItemTransaksiVo> getAllItem() {
-        List<ItemTransaksiVo> listItem = new ArrayList<>();
-        listItem = itemTransaksiRepository.findAllItem();
+    public List<ItemTransaksi> getAllItem() {
+     List<ItemTransaksi> listItem = new ArrayList<>();
+        listItem = itemTransaksiRepository.findAll();
         if (listItem != null) {
             return listItem;
         }
         return null;
     }
+
 
     @Override
     public ItemTransaksi getItemByIdUser(String email) {
@@ -49,9 +48,8 @@ public class ItemTransaksiServiceImpl implements ItemTransaksiService {
 
     @Override
     public ItemTransaksi saveTransaksi(ItemTransaksiVo itemTransaksiVo) {
-
-//        ItemTransaksi itemTransaksi = new ItemTransaksi(itemTransaksiVo.getUser_lolin_id(), itemTransaksiVo.getNama_barang()
-//                , itemTransaksiVo.getQty(), itemTransaksiVo.getHarga_deal(), itemTransaksiVo.getAlamat(),
+//        ItemTransaksi itemTransaksi = new ItemTransaksi(itemTransaksiVo.get, itemTransaksiVo.getNama_barang()
+//                , itemTransaksiVo.getQty(), itemTransaksiVo.getHrg_deal(), itemTransaksiVo.getAlamat(),
 //                itemTransaksiVo.getJns_pengiriman());
 //        itemTransaksiRepository.save(itemTransaksi);
 //        return  itemTransaksi;

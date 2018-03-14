@@ -34,9 +34,9 @@ public class UserLolinServiceImpl implements UserLolinService {
     }
 
     @Override
-    public List<UserLolinVo> getAllUser() {
-        List<UserLolinVo> listUser = new ArrayList<>();
-        listUser = userLolinRepository.findAllUser();
+    public List<UserLolin> getAllUser() {
+        List<UserLolin> listUser = new ArrayList<>();
+        listUser = userLolinRepository.findAll();
         if (listUser != null) {
             return listUser;
         }
@@ -44,14 +44,14 @@ public class UserLolinServiceImpl implements UserLolinService {
     }
 
     @Override
-    public UserLolinVo getUserById(int id)  {
+    public UserLolin getUserById(int id)  {
         UserLolin userLolin = userLolinRepository.findOneById(id);
         if(userLolin == null)
         {
             return null;
         }
-        UserLolinVo userLolinVo = new UserLolinVo(userLolin.getId(), userLolin.getNama_user(), userLolin.getEmail(), userLolin.getPassword(), userLolin.getAlamat(), userLolin.getNo_hp());
-        return userLolinVo;
+        UserLolin userLolins = new UserLolin(userLolin.getNama_user(), userLolin.getEmail(), userLolin.getPassword(), userLolin.getNo_hp());
+        return userLolin;
     }
 
     @Override
@@ -60,9 +60,9 @@ public class UserLolinServiceImpl implements UserLolinService {
     }
 
     @Override
-    public UserLolin saveUser(UserLolinVo userLolinVo) {
-       UserLolin userLolin = new UserLolin(userLolinVo.getEmail(), userLolinVo.getPassword(), userLolinVo.getNama_user(),
-               userLolinVo.getAlamat(), userLolinVo.getNo_hp());
+    public UserLolin saveUser(UserLolin userLolins) {
+       UserLolin userLolin = new UserLolin(userLolins.getEmail(), userLolins.getPassword(), userLolins.getNama_user(),
+               userLolins.getNo_hp());
        userLolinRepository.save(userLolin);
        return  userLolin;
     }

@@ -8,10 +8,10 @@ import java.util.List;
  * Created by charolinesepta on 14/03/18.
  */
 public interface UserLolinService {
-    List<UserLolinVo> getAllUser();
-    UserLolinVo getUserById (int id);
+    List<UserLolin> getAllUser();
+    UserLolin getUserById (int id);
     UserLolin getUserByNama (String nama_user);
-    UserLolin saveUser (UserLolinVo userLolinVo);
+    UserLolin saveUser (UserLolin userLolin);
     UserLolin loginUser (String email, String password);
     boolean isEmailIsExists(String email);
 }

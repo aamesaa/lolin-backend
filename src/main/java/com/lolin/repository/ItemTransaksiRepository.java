@@ -22,6 +22,8 @@ public interface ItemTransaksiRepository extends JpaRepository<ItemTransaksi, St
 
 //    List<ItemTransaksi> findAll();
 
-    @Query(value = "SELECT new com.lolin.vo.ItemTransaksiVo(id, nama_barang, hrg_deal, qty, alamat, jns_pengiriman, status_barang) from ItemTransaksi")
-    List<ItemTransaksiVo> findAllItem();
+//    @Query(value = "SELECT new com.lolin.vo.ItemTransaksiVo(id, nama_barang, hrg_deal, qty, alamat, jns_pengiriman, status_barang) from ItemTransaksi")
+//    List<ItemTransaksiVo> findAllItem();
+
+    List<ItemTransaksi> findAll();
 }
