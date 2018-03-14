@@ -13,9 +13,10 @@ public interface ItemTransaksiService {
 
     List<ItemTransaksi> getAllItem();
     ItemTransaksi getItemByIdUser (int id_user);
+    ItemTransaksi saveTransaksi (ItemTransaksi itemTransaksi);
 
 //
 //    ItemTransaksi getItemById (String nama_user);
-//    ItemTransaksi saveTransaksi (ItemTransaksiVo itemTransaksiVo);
+//
 //    ItemTransaksi changeItem (int hrg_deal, boolean status);
 }

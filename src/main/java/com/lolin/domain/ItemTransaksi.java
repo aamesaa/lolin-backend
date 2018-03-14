@@ -39,6 +39,16 @@ public class ItemTransaksi implements Serializable{
         this.status_barang = status_barang;
     }
 
+    public ItemTransaksi(int id_user, String nama_barang, String alamat, int qty, int hrg_deal, String jns_pengiriman, boolean status_barang) {
+        this.id_user = id_user;
+        this.nama_barang = nama_barang;
+        this.alamat = alamat;
+        this.qty = qty;
+        this.jns_pengiriman = jns_pengiriman;
+        this.hrg_deal = hrg_deal;
+        this.status_barang = status_barang;
+    }
+
     public ItemTransaksi() {
 
     }

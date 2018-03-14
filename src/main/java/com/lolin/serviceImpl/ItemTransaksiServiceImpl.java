@@ -1,6 +1,7 @@
 package com.lolin.serviceImpl;
 
 import com.lolin.domain.ItemTransaksi;
+import com.lolin.domain.UserLolin;
 import com.lolin.repository.ItemTransaksiRepository;
 import com.lolin.service.ItemTransaksiService;
 import com.lolin.vo.ItemTransaksiVo;
@@ -45,6 +46,15 @@ public class ItemTransaksiServiceImpl implements ItemTransaksiService {
             return itemMapper;
         }
         return itemMapper;
+    }
+
+    @Override
+    public ItemTransaksi saveTransaksi(ItemTransaksi itemTransaksi) {
+        ItemTransaksi itemTransaksis = new ItemTransaksi(itemTransaksi.getId_user(), itemTransaksi.getNama_barang(),
+                itemTransaksi.getAlamat(), itemTransaksi.getQty(), itemTransaksi.getHrg_deal(), itemTransaksi.getJns_pengiriman(), itemTransaksi.isStatus_barang());
+        itemTransaksiRepository.save(itemTransaksis);
+        return itemTransaksis;
+        
     }
 
 }
