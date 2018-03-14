@@ -1,8 +1,8 @@
 package com.lolin.repository;
 
 import com.lolin.domain.DetailTransaksi;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +19,10 @@ public interface DetailTransaksiRepository extends JpaRepository<DetailTransaksi
 //    List<DetailTransaksi> findOneByIdUser(int user_lolin_id);
 
     List<DetailTransaksi> findAll();
+
+    @Query(value = "SELECT new com.lolin.domain.DetailTransaksi( id, id_user, id_barang, hrg_bid) from DetailTransaksi where id_user=(?1)")
+    DetailTransaksi findOneByIdUser(int id_user);
+
+    @Query(value = "SELECT new com.lolin.domain.DetailTransaksi( id, id_user, id_barang, hrg_bid) from DetailTransaksi where id_barang=(?1)")
+    DetailTransaksi findOneByIdBarang(int id_barang);
 }

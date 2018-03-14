@@ -1,7 +1,6 @@
 package com.lolin.service;
 
 import com.lolin.domain.DetailTransaksi;
-import com.lolin.domain.UserLolin;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
 public interface DetailTransaksiService {
     List<DetailTransaksi> getAllDetail();
     DetailTransaksi getUserById(int Id);
-    DetailTransaksi getUserByIdUser(int user_lolin_id);
-    DetailTransaksi getUserByNama (String nama_user);
+    DetailTransaksi getDetailByIdUser(int id_user);
+    DetailTransaksi getDetailByIdBarang(int id_barang);
     DetailTransaksi saveDetail (DetailTransaksi detailTransaksi);
 }

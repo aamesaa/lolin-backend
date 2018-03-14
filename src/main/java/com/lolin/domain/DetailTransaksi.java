@@ -33,6 +33,13 @@ public class DetailTransaksi implements Serializable {
         this.hrg_bid = hrg_bid;
     }
 
+    public DetailTransaksi(int id, int id_barang, int id_user, int hrg_bid) {
+        this.id = id;
+        this.id_barang = id_barang;
+        this.id_user = id_user;
+        this.hrg_bid = hrg_bid;
+    }
+
     //    public DetailTransaksi(ItemTransaksi barang, UserLolin userLolin, int hrg_bid) {
 //        this.barang = barang;
 //        this.userLolin = userLolin;

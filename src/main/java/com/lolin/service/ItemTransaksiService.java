@@ -1,8 +1,6 @@
 package com.lolin.service;
 
 import com.lolin.domain.ItemTransaksi;
-import com.lolin.domain.UserLolin;
-import com.lolin.vo.ItemTransaksiVo;
 
 import java.util.List;
 
