@@ -13,6 +13,7 @@ public interface ItemTransaksiService {
     List<ItemTransaksi> getItemByIdUser (int id_user);
     ItemTransaksi saveTransaksi (ItemTransaksi itemTransaksi);
     ItemTransaksi getItemById (int id);
+    ItemTransaksi updateTransaksi (ItemTransaksi itemTransaksi);
 //
 //    ItemTransaksi changeItem (int hrg_deal, boolean status);
 }

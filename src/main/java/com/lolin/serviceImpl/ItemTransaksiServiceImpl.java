@@ -60,11 +60,20 @@ public class ItemTransaksiServiceImpl implements ItemTransaksiService {
     @Override
     public ItemTransaksi getItemById(int id) {
         ItemTransaksi itemMapper = itemTransaksiRepository.findOneById(id);
-        if(itemMapper == null)
-        {
-            return itemMapper;
-        }
         return itemMapper;
+    }
+
+    @Override
+    public ItemTransaksi updateTransaksi(ItemTransaksi itemTransaksi) {
+        ItemTransaksi oldItemTransaksi = itemTransaksiRepository.findOneById(itemTransaksi.getId());
+        if (oldItemTransaksi == null)
+        {
+          return  oldItemTransaksi;
+        }
+        oldItemTransaksi.setHrg_deal(itemTransaksi.getHrg_deal());
+        oldItemTransaksi.setStatus_barang(itemTransaksi.isStatus_barang());
+        ItemTransaksi newItemTransaksi = itemTransaksiRepository.save(oldItemTransaksi);
+        return newItemTransaksi;
     }
 
 }
